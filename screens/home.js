@@ -10,7 +10,7 @@ import {
 
 const lista = require('./dados/informacoes.json');
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) =>  {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroll}>
@@ -27,7 +27,7 @@ const HomeScreen = () => {
                 <Text style={styles.titulo}>{item.titulo}</Text>
               </View>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate(item.tela)}>
               {/* Imagem */}
               <Image source={{ uri: item.imagemSecundari }} style={styles.postImage} />
               {/* Texto assunto */}
