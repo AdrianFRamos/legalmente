@@ -2,130 +2,75 @@
     "ListaDados": [
       {
         "titulo": "titulo1",
-        "nome": "Brenda Pablo",
-         "textAssunto": "O que é o Direito",
-         "imagemPrinvial": "http://1.bp.blogspot.com/-USVvhiRZucU/US_oogytt7I/AAAAAAAAH0U/iZ5Ggl_Eyyc/s1600/fille+asiatique.jpg",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt909lgI9pdrgdEqpxSoSgJqhNYg6iPCI_DA&usqp=CAU",
-         "tela":"TELA1"
-         },{
+        "temaPinciapl": "Guarda compartilhada",
+        "textAssunto": "O que é guarda compartilhada",
+        "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela": "TELA1"
+      },
+      {
         "titulo": "titulo2",
-        "nome": " Ana Jullia",
-         "textAssunto": "Diferença entre crime e contravenção",
-         "imagemPrinvial": "https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2006/04/formacao_1600x1200-quais-sao-as-caracteristicas-de-uma-mulher-de-valo.jpg",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoMsRP0nmJBADH9B0CcIIaWQ04fof-y1yhXQ&usqp=CAU",
-         "tela":"TELA2"
+        "temaPinciapl": "ATOS INFRACIONAIS",
+        "textAssunto": "Diferença entre crime e contravenção",
+        "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA2"
       },{
         "titulo": "titulo3",
-        "nome": "Felipe Cardoso",
+        "temaPinciapl": "Felipe Cardoso",
          "textAssunto": "O que é habeas corpus",
-         "imagemPrinvial": "https://i.pinimg.com/736x/82/d7/85/82d78509c4f8a67120ccc684c13da516.jpg",
-         "imagemSecundari": "https://i.pinimg.com/550x/46/2c/34/462c34e51ecce2461a7d0e7b40d79fec.jpg",
-         "tela":"TELA3"
+         "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA3"
       },{
         "titulo": "titulo4",
-        "nome": "Carlos Gabriel",
+        "temaPinciapl": "Carlos Gabriel",
          "textAssunto": "Função do advogado",
-         "imagemPrinvial": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO9r8IGeeGxPlDTifz_gmjBY3ucCHCEEUMbQ&usqp=CAU",
-         "imagemSecundari": "https://i.pinimg.com/236x/79/bc/9c/79bc9c214b213f98e9b0d8af419d5724.jpg",
-         "tela":"TELA4"
+         "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA4"
       },{
         "titulo": "titulo5",
-        "nome": "Vera Pareira",
+        "temaPinciapl": "Vera Pareira",
          "textAssunto": "Como funciona um júri popular",
-         "imagemPrinvial": "https://ead.sestsenat.org.br/wp-content/uploads/2019/03/Sa%C3%BAde-da-Mulher.jpg",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt909lgI9pdrgdEqpxSoSgJqhNYg6iPCI_DA&usqp=CAU",
-         "tela":"TELA5"
+         "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA5"
       },{
         "titulo": "titulo6",
-        "nome": "Ronaldo Calos",
+        "temaPinciapl": "Ronaldo Calos",
          "textAssunto": "O que é constituição federal",
-         "imagemPrinvial": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2GvM99hZHccTZ6MGcc2zJeLWaSyv1Wx88ng&usqp=CAU",
-         "imagemSecundari": "https://thumbs.dreamstime.com/b/fam%C3%ADlia-feliz-com-cavalo-se-divertindo-na-fazenda-principal-foco-no-garoto-direito-certo-212156955.jpg",
-         "tela":"TELA6"
+         "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA6"
       },{
         "titulo": "titulo7",
-        "nome": "Bruno Gois",
+        "temaPinciapl": "Bruno Gois",
          "textAssunto": "Direito civil em poucas palavras",
-         "imagemPrinvial": "https://img.freepik.com/fotos-gratis/homem-negro-posar_23-2148171639.jpg?w=2000",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRDDzGT-Wv93HjnjzfKkMbKIATHT4M_7MIwQ&usqp=CAU",
-         "tela":"TELA7"
+         "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA7"
       },{
         "titulo": "titulo8",
-        "nome": "Ana Gois",
+        "temaPinciapl": "Ana Gois",
          "textAssunto": "Direito penal resumido",
-         "imagemPrinvial": "https://img.freepik.com/fotos-gratis/mulher-jovem-e-elegante-magnifica-com-grandes-olhos-castanhos-e-um-sorriso-incrivel_291049-2578.jpg?w=2000",
-         "imagemSecundari": "https://cdn.pixabay.com/photo/2018/08/29/03/57/man-3639100_960_720.jpg",
-         "tela":"TELA8"
+         "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA8"
       },{
         "titulo": "titulo9",
-        "nome": "Viviane Lima",
+        "temaPinciapl": "Viviane Lima",
          "textAssunto": "Diferença entre lei e norma",
-         "imagemPrinvial": "https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2006/04/formacao_1600x1200-quais-sao-as-caracteristicas-de-uma-mulher-de-valo.jpg",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQINvGvdfZW37T4bi9npjujy2XJ5SrHefrblgT3Jp5pqvt0HgVGszj14RxWL88kqd20tTw&usqp=CAU",
-         "tela":"TELA9"
+         "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA9"
       },{
         "titulo": "titulo10",
-        "nome": "Carol Ramos",
+        "temaPinciapl": "Carol Ramos",
          "textAssunto": "Diferença entre lei e norma",
-         "imagemPrinvial": "https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2014/11/formacao_1600x1200-uma-mulher-virtuosa-e-feita-de-esforcos.jpg",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK3YAzf2kCEMhW5IMvOJHuqQF6atQkuyZImegOuXrDSw_8xDKg_Pu2tAvGedPKqwcRlRA&usqp=CAU",
-         "tela":"TELA10"
-      },{
-        "titulo": "titulo11",
-        "nome": "Vanessa Lima",
-         "textAssunto": "O que é presunção de inocência",
-         "imagemPrinvial": "https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2014/11/formacao_1600x1200-uma-mulher-virtuosa-e-feita-de-esforcos.jpg",
-         "imagemSecundari": "https://ssxdigital.com.br/wp-content/uploads/2020/11/como-usar-a-internet-das-coisas-no-seu-negocio.jpg",
-         "tela":"TELA1"
-      },{
-        "titulo": "titulo12",
-        "nome": "Ronaldo Gonsalves",
-         "textAssunto": "Para que serve um contrato",
-         "imagemPrinvial": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_h02P5dLdpdzC1WUszWJyK0xZULngBRbzYA&usqp=CAU",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTud2VUuLxTBUuet-c8Eky3-lhqVVLuHT_6ag&usqp=CAU",
-         "tela":"TELA1"
-      },{
-        "titulo": "titulo13",
-        "nome": "Bruno Cardoso",
-         "textAssunto": "O que é justiça gratuita",
-         "imagemPrinvial": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYL7txDexZjHlqkCqLBw5k_ROu6wkv_RK8fkeCsgTKsYNXdnUur0UakQaG48bvqYHAf4&usqp=CAU",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuKqPtXk5-raWEFyq2mVqnzL16NTrwbbMqAQ&usqp=CAU",
-         "tela":"TELA1"
-      },{
-        "titulo": "titulo14",
-        "nome": "Ana Vitoria",
-         "textAssunto": "Como funcionam os direitos do consumidor",
-         "imagemPrinvial": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5zPfOTljWfLPhPPZihPp_BiG5M83oV-Dn0Q&usqp=CAU",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPMFWPZOCbw0j-8B6T6jZaoeXuY3zgkBBXY19k8HVadU-Zh4240d7nweQOy-iXDnuSqVM&usqp=CAU",
-         "tela":"TELA1"
-      },{
-        "titulo": "titulo15",
-        "nome": "Felipe ",
-         "textAssunto": "O que é dano moral",
-         "imagemPrinvial": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO9r8IGeeGxPlDTifz_gmjBY3ucCHCEEUMbQ&usqp=CAU",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlrO9p25kIgGbvHCS82zwSbtXGytLgXtNd2w83RPzT25YpaOZULysQMkdMB1jbsDJUpJ4&usqp=CAU",
-         "tela":"TELA1"
-      },{
-        "titulo": "titulo16",
-        "nome": "Carlos Germano",
-         "textAssunto": "Diferença entre público e privado",
-         "imagemPrinvial": "https://i.pinimg.com/236x/3a/95/e2/3a95e2cbecffafb6bf161550b7450a75.jpg",
-         "imagemSecundari": "https://cdn.pixabay.com/photo/2018/08/29/03/57/man-3639100_960_720.jpg",
-         "tela":"TELA1"
-      },{
-        "titulo": "titulo17",
-        "nome": "Vanessa Pereira ",
-         "textAssunto": "O que é processo judicial",
-         "imagemPrinvial": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEimIY3jiQQSnzmz1FdsF2vz-jb00h64AMUw&usqp=CAU",
-         "imagemSecundari": "https://thumbs.dreamstime.com/b/fam%C3%ADlia-feliz-em-uma-fazenda-de-cavalos-jovem-numa-163416417.jpg",
-         "tela":"TELA1"
-      },{
-        "titulo":"titulo18",
-        "nome": "Ronaldo Gabriel de Lima",
-         "textAssunto": "Diferença entre ação e recurso",
-         "imagemPrinvial": "https://www.cartacapital.com.br/wp-content/uploads/2019/12/arassari.jpg",
-         "imagemSecundari": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt909lgI9pdrgdEqpxSoSgJqhNYg6iPCI_DA&usqp=CAU",
-         "tela":"TELA1"
+         "imagemPrinvial": "splash",
+        "imagemSecundari": "splash",
+        "tela":"TELA10"
       }
     ]
   }
