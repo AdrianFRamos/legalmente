@@ -1,77 +1,75 @@
 {
-    "ListaDados": [
+  "ListaDados": [
       {
         "titulo": "titulo1",
-        "temaPinciapl": "Guarda compartilhada",
+        "temaPinciapl": "AtosInfracionais",
         "textAssunto": "O que é guarda compartilhada",
-        "imagemPrinvial": "splash",
-        "imagemSecundari": "splash",
+        "imagemSecundari": "AtosInfracionais",
         "tela": "TELA1"
       },
       {
         "titulo": "titulo2",
-        "temaPinciapl": "ATOS INFRACIONAIS",
+        "temaPinciapl": "IdentidadeLegal",
         "textAssunto": "Diferença entre crime e contravenção",
-        "imagemPrinvial": "splash",
-        "imagemSecundari": "splash",
+        "imagemSecundari": "IdentidadeLegal",
         "tela":"TELA2"
-      },{
+      },
+      {
         "titulo": "titulo3",
-        "temaPinciapl": "Felipe Cardoso",
-         "textAssunto": "O que é habeas corpus",
-         "imagemPrinvial": "splash",
+        "temaPinciapl": "splash",
+        "textAssunto": "O que é habeas corpus",
         "imagemSecundari": "splash",
         "tela":"TELA3"
-      },{
+      },
+      {
         "titulo": "titulo4",
-        "temaPinciapl": "Carlos Gabriel",
-         "textAssunto": "Função do advogado",
-         "imagemPrinvial": "splash",
-        "imagemSecundari": "splash",
+        "temaPinciapl": "ViolênciaIntrafamiliar",
+        "textAssunto": "Função do advogado",
+        "imagemSecundari": "ViolênciaIntrafamiliar",
         "tela":"TELA4"
-      },{
+      },
+      {
         "titulo": "titulo5",
-        "temaPinciapl": "Vera Pareira",
-         "textAssunto": "Como funciona um júri popular",
-         "imagemPrinvial": "splash",
-        "imagemSecundari": "splash",
+        "temaPinciapl": "Adoções",
+        "textAssunto": "Como funciona um júri popular",
+        "imagemSecundari": "Adoções",
         "tela":"TELA5"
-      },{
+      },
+      {
         "titulo": "titulo6",
-        "temaPinciapl": "Ronaldo Calos",
-         "textAssunto": "O que é constituição federal",
-         "imagemPrinvial": "splash",
-        "imagemSecundari": "splash",
+        "temaPinciapl": "ViolênciaDoméstica",
+        "textAssunto": "O que é constituição federal",
+        "imagemSecundari": "ViolênciaDoméstica",
         "tela":"TELA6"
-      },{
+      },
+      {
         "titulo": "titulo7",
-        "temaPinciapl": "Bruno Gois",
-         "textAssunto": "Direito civil em poucas palavras",
-         "imagemPrinvial": "splash",
-        "imagemSecundari": "splash",
+        "temaPinciapl": "GuardaCompartilhada",
+        "textAssunto": "Direito civil em poucas palavras",
+        "imagemSecundari": "GuardaCompartilhada",
         "tela":"TELA7"
-      },{
+      },
+      {
         "titulo": "titulo8",
-        "temaPinciapl": "Ana Gois",
-         "textAssunto": "Direito penal resumido",
-         "imagemPrinvial": "splash",
-        "imagemSecundari": "splash",
+        "temaPinciapl": "DestituiçãoPoderFamiliar",
+        "textAssunto": "Direito penal resumido",
+        "imagemSecundari": "DestituiçãoPoderFamiliar",
         "tela":"TELA8"
-      },{
+      },
+      {
         "titulo": "titulo9",
         "temaPinciapl": "Viviane Lima",
-         "textAssunto": "Diferença entre lei e norma",
-         "imagemPrinvial": "splash",
+        "textAssunto": "Diferença entre lei e norma",
         "imagemSecundari": "splash",
         "tela":"TELA9"
-      },{
+      },
+      {
         "titulo": "titulo10",
         "temaPinciapl": "Carol Ramos",
-         "textAssunto": "Diferença entre lei e norma",
-         "imagemPrinvial": "splash",
+        "textAssunto": "Diferença entre lei e norma",
         "imagemSecundari": "splash",
         "tela":"TELA10"
       }
-    ]
-  }
+  ]
+}
   

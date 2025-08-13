@@ -1,15 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, useColorScheme} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const lista = require('./dados/informacoes.json');
 const imagens = {
   'splash': require('../assets/tema1.png'),
+  'IdentidadeLegal': require('../assets/identidadeLegal.jpg'),
+  'AtosInfracionais': require('../assets/atosInfracionais.jpg'),
+  'ViolênciaIntrafamiliar': require('../assets/violênciaIntrafamiliar.jpg'),
+  'Adoções': require('../assets/adoções.jpg'),
+  'ViolênciaDoméstica': require('../assets/violênciaDoméstica.jpg'),
+  'GuardaCompartilhada': require('../assets/guardaCompartilhada.jpg'),
+  'DestituiçãoPoderFamiliar': require('../assets/destituiçãoPoderFamiliar.jpg'),
 };
 const HomeScreen = ({ navigation }) =>  {
+  const colorScheme = useColorScheme();
+  const backgroundColor = '#ffffff';
+  
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.scroll}>
+      <ScrollView style={styles.scroll} contentContainerStyle={{ paddingBottom: 35 ,backgroundColor: '#ffffff' }}>
         <LinearGradient colors={['#8B0000', '#4A0011','#2C1810']} style={styles.headerScroll2}>
           <Image source={require('../assets/splash.png')} style={styles.icon} resizeMode="contain"/>
           <Text style={styles.textTemaAplicativo}>Direito da Familia
@@ -58,14 +68,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   emptyText: {
-    color: '#fff',
+    color: '#000',
     textAlign: 'center',
     marginTop: 20,
     fontSize: 16,
   },
   card: {
     width: '100%',
-    height: '92%',
+    height: '94%',
     backgroundColor: '#222222',
     borderRadius: 12,
     padding: 10,
@@ -86,16 +96,18 @@ const styles = StyleSheet.create({
   temaPinciapl: {
     color: 'rgba(244, 178, 56, 1)',
     fontWeight: 'bold',
-    fontSize: 20,
+    marginTop: -10,
+    fontSize: 25,
   },
   titulo: {
+    marginTop: 5,
     color: '#bbb',
-    fontSize: 14,
+    fontSize: 20,
   },
   postImage: {
-    width: 55,
-    height: 55,
-    borderRadius: 30,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     borderColor: '#f2d974ff',
     borderWidth: 2,
     marginRight: 10,
