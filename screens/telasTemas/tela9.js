@@ -1,30 +1,275 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, Image, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-const Tela9Screen= () => {
- return (
-     <LinearGradient  colors={['#2C1810','#4A0011','#8B0000','#8B0000','#8B0000', '#4A0011','#2C1810' ]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.container}>
-       <Text style={styles.text}>Tela assunto 9</Text>
-     </LinearGradient>
-   );
- };
-     
- const styles = StyleSheet.create({
-   container: {
-     flex: 1,
-     alignItems: 'center',
-     justifyContent: 'center',
-     padding: 16,
-   },
-   text: {
-     color: '#fff',
-     fontSize: 20,
-     fontWeight: 'bold',
-     textShadowColor: 'rgba(0,0,0,0.5)',
-     textShadowOffset: { width: 1, height: 1 },
-     textShadowRadius: 3,
-   },
- });
-     
-export default Tela9Screen;
+// ---------- COMPONENTE CARD ----------
+function Card({ isFlipped, onPress, image, resizeModeType = "cover" }) {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.card} activeOpacity={0.8}>
+      <Image
+        source={isFlipped ? image : require('../../assets/jogoMemoria/backCard.png')}
+        style={styles.image}
+        resizeMode={resizeModeType}
+      />
+    </TouchableOpacity>
+  );
+}
+
+// ---------- LISTA DE IMAGENS DO JOGO ----------
+const images = [
+  { img: require('../../assets/jogoMemoria/frontCard1.png'), pairId: 1 },
+  { img: require('../../assets/jogoMemoria/frontCard2.png'), pairId: 2 },
+  { img: require('../../assets/jogoMemoria/frontCard3.png'), pairId: 3 },
+  { img: require('../../assets/jogoMemoria/frontCard4.png'), pairId: 4 },
+  { img: require('../../assets/jogoMemoria/frontCard5.png'), pairId: 5 },
+  { img: require('../../assets/jogoMemoria/frontCard6.png'), pairId: 6 },
+  { img: require('../../assets/jogoMemoria/frontCard7.png'), pairId: 7 },
+  { img: require('../../assets/jogoMemoria/frontCard8.png'), pairId: 8 },
+  { img: require('../../assets/jogoMemoria/frontCardImg1.png'), pairId: 1 },
+  { img: require('../../assets/jogoMemoria/frontCardImg2.png'), pairId: 2 },
+  { img: require('../../assets/jogoMemoria/frontCardImg3.png'), pairId: 3 },
+  { img: require('../../assets/jogoMemoria/frontCardImg4.png'), pairId: 4 },
+  { img: require('../../assets/jogoMemoria/frontCardImg5.png'), pairId: 5 },
+  { img: require('../../assets/jogoMemoria/frontCardImg6.png'), pairId: 6 },
+  { img: require('../../assets/jogoMemoria/frontCardImg7.png'), pairId: 7 },
+  { img: require('../../assets/jogoMemoria/frontCardImg8.png'), pairId: 8 },
+];
+
+// ---------- LISTA DE TÓPICOS ----------
+const familyTopics = [
+  {
+    titulo: 'Família Unipessoal',
+    imagem: require('../../assets/jogoMemoria/familyImg1.png'),
+    explicacao: 'Composta por uma única pessoa que vive sozinha, cada vez mais comum na sociedade moderna.'
+  },
+  {
+    titulo: 'Família Adotiva',
+    imagem: require('../../assets/jogoMemoria/familyImg2.png'),
+    explicacao: 'Formada através de adoção legal de criança, criando vínculos afetivos e jurídicos permanentes.'
+  },
+  {
+    titulo: 'Família Monoparental',
+    imagem: require('../../assets/jogoMemoria/familyImg3.png'),
+    explicacao: 'Formada por apenas um dos pais e seus filhos, seja por divórcio, viuvez ou escolha.'
+  },
+  {
+    titulo: 'Família Reconstituída',
+    imagem: require('../../assets/jogoMemoria/familyImg4.png'),
+    explicacao: 'Quando um ou ambos os cônjuges trazem filhos de relacionamentos anteriores.'
+  },
+  {
+    titulo: 'Família Anaparental',
+    imagem: require('../../assets/jogoMemoria/familyImg5.png'),
+    explicacao: 'Constituída por irmãos ou parentes que vivem juntos, sem presença de pais.'
+  },
+  {
+    titulo: 'Família Nuclear',
+    imagem: require('../../assets/jogoMemoria/familyImg6.png'),
+    explicacao: 'Pai, mãe e filhos vivendo na mesma casa. Modelo tradicional.'
+  },
+  {
+    titulo: 'Família Extensa',
+    imagem: require('../../assets/jogoMemoria/familyImg7.png'),
+    explicacao: 'Inclui avós, tios e primos vivendo juntos ou mantendo vínculos próximos.'
+  },
+  {
+    titulo: 'Família Homoafetiva',
+    imagem: require('../../assets/jogoMemoria/familyImg8.png'),
+    explicacao: 'Casal do mesmo sexo, com ou sem filhos, reconhecida legalmente no Brasil.'
+  }
+];
+
+// ---------- FUNÇÃO PARA EMBARALHAR ----------
+const createShuffledDeck = () => {
+  return images
+    .map((card, index) => ({
+      id: index + '_' + Math.random(),
+      image: card.img,
+      pairId: card.pairId,
+      isFlipped: false,
+      isMatched: false,
+    }))
+    .sort(() => Math.random() - 0.5);
+};
+
+export default function Tela9Screen() {
+  const [deck, setDeck] = useState(createShuffledDeck());
+  const [selectedCards, setSelectedCards] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleCardPress = (index) => {
+    if (deck[index].isFlipped || selectedCards.length === 2) return;
+
+    const newDeck = [...deck];
+    newDeck[index].isFlipped = true;
+    setDeck(newDeck);
+    setSelectedCards([...selectedCards, { ...newDeck[index], index }]);
+  };
+
+  useEffect(() => {
+    if (selectedCards.length === 2) {
+      const [first, second] = selectedCards;
+
+      if (first.pairId === second.pairId) {
+        const updatedDeck = [...deck];
+        updatedDeck[first.index].isMatched = true;
+        updatedDeck[second.index].isMatched = true;
+        setDeck(updatedDeck);
+        setSelectedCards([]);
+      } else {
+        setTimeout(() => {
+          const updatedDeck = [...deck];
+          updatedDeck[first.index].isFlipped = false;
+          updatedDeck[second.index].isFlipped = false;
+          setDeck(updatedDeck);
+          setSelectedCards([]);
+        }, 1000);
+      }
+    }
+  }, [selectedCards]);
+
+  useEffect(() => {
+    if (deck.every((card) => card.isMatched)) {
+      setModalVisible(true);
+    }
+  }, [deck]);
+
+  return (
+    <LinearGradient colors={['#2C1810','#4A0011','#8B0000','#8B0000','#8B0000', '#4A0011','#2C1810']} style={styles.container}>
+      <ScrollView contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }}>
+        <Text style={styles.title}>Jogo da Memória - Família</Text>
+        <FlatList data={deck} keyExtractor={(item) => item.id} 
+          columnWrapperStyle={{ gap: 0, justifyContent: 'center' }} // espaçamento horizontal
+          numColumns={4} 
+          renderItem={({ item, index }) => (
+            <Card image={item.image} isFlipped={item.isFlipped || item.isMatched} 
+              onPress={() => handleCardPress(index)}resizeModeType="stretch" 
+            />
+          )}
+          scrollEnabled={false}
+          contentContainerStyle={[styles.board, { rowGap: 3 }]} // espaçamento vertical
+          style={{ width: '95%', height: '100%' }} 
+        />
+        <View style={styles.topicContainer}>
+          <Text style={styles.topicBodyTitle}> Descubra mais </Text>
+          <View style={styles.topicTbody}>
+            {familyTopics.map((topic, index) => (
+              <View key={index} style={styles.topicCard}>
+                <Text style={styles.topicCardTitle}>{topic.titulo}</Text>
+                <Image source={topic.imagem} style={styles.topicCardImage}/>
+                <Text style={styles.topicCardText}>{topic.explicacao}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+      </ScrollView>
+      <Modal visible={modalVisible} transparent animationType="fade">
+        <View style={styles.modalBackground}>
+          <View style={styles.modalContainer}>
+            <TouchableOpacity style={styles.button}
+              onPress={() => { setDeck(createShuffledDeck()); setModalVisible(false);}}>
+              <Text style={styles.buttonText}>Jogar Novamente</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </LinearGradient>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 45
+  },
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginVertical: 15
+  },
+  board: {
+    paddingBottom: 10,
+  },
+  card: {
+    width: 82,
+    height: 145,
+    margin: 2,
+    marginHorizontal: 3,
+    borderRadius: 8,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
+  },
+  topicContainer: {
+    marginTop: 10,
+    width: '100%',
+    alignItems: 'center'
+  },
+  topicBodyTitle: {
+    fontSize: 20,
+    backgroundColor: '#8b0000',
+    borderRadius: 8,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    marginBottom: 15,
+    paddingHorizontal: 10
+  },
+  topicTbody: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  topicCard: {
+    width: '41%',
+    margin: 5,
+    backgroundColor: '#fff',
+    padding: 10,
+    borderRadius: 10,
+    elevation: 3
+  },
+  topicCardTitle: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 5
+  },
+  topicCardImage: {
+    width: '100%',
+    height: 100,
+    resizeMode: 'contain',
+    marginBottom: 2
+  },
+  topicCardText: {
+    fontSize: 12,
+    textAlign: 'justify',
+  },
+  modalBackground: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContainer: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 15,
+    alignItems: 'center',
+    width: '80%',
+  },
+  button: {
+    backgroundColor: '#d4af37',
+    padding: 12,
+    borderRadius: 8,
+    marginTop: 10,
+    width: '100%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+  }
+});
