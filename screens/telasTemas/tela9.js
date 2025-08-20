@@ -233,18 +233,20 @@ const styles = StyleSheet.create({
   },
   topicCardTitle: {
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 16,
     textAlign: 'center',
     marginBottom: 5
   },
   topicCardImage: {
-    width: '100%',
+    width: '70%',
     height: 100,
-    resizeMode: 'contain',
-    marginBottom: 2
+    resizeMode: 'cover',
+    alignSelf: 'center',
+    marginBottom: 2,
+    borderRadius: 20,
   },
   topicCardText: {
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'justify',
   },
   modalBackground: {
