@@ -97,6 +97,7 @@ export default function Tela9Screen() {
   const [deck, setDeck] = useState(createShuffledDeck());
   const [selectedCards, setSelectedCards] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [showTopics, setShowTopics] = useState(false);
 
   const handleCardPress = (index) => {
     if (deck[index].isFlipped || selectedCards.length === 2) return;
@@ -136,7 +137,7 @@ export default function Tela9Screen() {
   }, [deck]);
 
   return (
-    <LinearGradient colors={['#2C1810','#4A0011','#8B0000','#8B0000','#8B0000', '#4A0011','#2C1810']} style={styles.container}>
+    <LinearGradient colors={['#A67C7C', '#8B4A52', '#5D252A']} style={styles.container}>
       <ScrollView contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }}>
         <Text style={styles.title}>Jogo da Memória - Família</Text>
         <FlatList data={deck} keyExtractor={(item) => item.id} 
@@ -152,16 +153,22 @@ export default function Tela9Screen() {
           style={{ width: '95%', height: '100%' }} 
         />
         <View style={styles.topicContainer}>
-          <Text style={styles.topicBodyTitle}> Descubra mais </Text>
-          <View style={styles.topicTbody}>
-            {familyTopics.map((topic, index) => (
-              <View key={index} style={styles.topicCard}>
-                <Text style={styles.topicCardTitle}>{topic.titulo}</Text>
-                <Image source={topic.imagem} style={styles.topicCardImage}/>
-                <Text style={styles.topicCardText}>{topic.explicacao}</Text>
-              </View>
-            ))}
-          </View>
+         <TouchableOpacity onPress={() => setShowTopics(!showTopics)}>
+            <Text style={styles.topicBodyTitle}>
+              {showTopics ? 'Ocultar detalhes' : 'Clique para mais detalhes'}
+            </Text>
+          </TouchableOpacity>
+          {showTopics && (
+            <View style={styles.topicTbody}>
+              {familyTopics.map((topic, index) => (
+                <View key={index} style={styles.topicCard}>
+                  <Text style={styles.topicCardTitle}>{topic.titulo}</Text>
+                  <Image source={topic.imagem} style={styles.topicCardImage}/>
+                  <Text style={styles.topicCardText}>{topic.explicacao}</Text>
+                </View>
+              ))}
+            </View>
+          )}
         </View>
       </ScrollView>
       <Modal visible={modalVisible} transparent animationType="fade">
@@ -210,13 +217,17 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   topicBodyTitle: {
-    fontSize: 20,
-    backgroundColor: '#8b0000',
+    width: 340,
+    height: 35,
+    fontSize: 18,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    backgroundColor: '#5D252A',
     borderRadius: 8,
     fontWeight: 'bold',
     color: '#ffffff',
     marginBottom: 15,
-    paddingHorizontal: 10
+    paddingHorizontal: 30
   },
   topicTbody: {
     flexDirection: 'row',
@@ -232,6 +243,7 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   topicCardTitle: {
+    color: '#5D252A',
     fontWeight: 'bold',
     fontSize: 16,
     textAlign: 'center',
@@ -246,6 +258,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   topicCardText: {
+    color: '#8B4A52',
     fontSize: 14,
     textAlign: 'justify',
   },

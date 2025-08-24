@@ -3,70 +3,70 @@
       {
         "titulo": "titulo1",
         "temaPinciapl": "AtosInfracionais",
-        "textAssunto": "O que é guarda compartilhada",
+        "textAssunto": "Condutas ilegais praticadas por adolescentes menores.",
         "imagemSecundari": "AtosInfracionais",
         "tela": "TELA1"
       },
       {
         "titulo": "titulo2",
         "temaPinciapl": "Adoções",
-        "textAssunto": "Como funciona um júri popular",
+        "textAssunto": "Ato legal de integrar criança à família",
         "imagemSecundari": "Adoções",
         "tela":"TELA2"
       },
       {
         "titulo": "titulo3",
-        "temaPinciapl": "splash",
-        "textAssunto": "O que é habeas corpus",
-        "imagemSecundari": "splash",
+        "temaPinciapl": "GuiaDeCasamento",
+        "textAssunto": "Orientações práticas para vida conjugal saudável.",
+        "imagemSecundari": "GuiaDeCasamento",
         "tela":"TELA3"
       },
       {
         "titulo": "titulo4",
         "temaPinciapl": "ViolênciaIntrafamiliar",
-        "textAssunto": "Função do advogado",
+        "textAssunto": "Agressões ocorridas dentro do ambiente familiar.",
         "imagemSecundari": "ViolênciaIntrafamiliar",
         "tela":"TELA4"
       },
       {
         "titulo": "titulo5",
         "temaPinciapl": "IdentidadeLegal",
-        "textAssunto": "Diferença entre crime e contravenção",
+        "textAssunto": "Reconhecimento jurídico da diversidade de gênero sexual.",
         "imagemSecundari": "IdentidadeLegal",
         "tela":"TELA5"
       },
       {
         "titulo": "titulo6",
         "temaPinciapl": "ViolênciaDoméstica",
-        "textAssunto": "O que é constituição federal",
+        "textAssunto": "Abusos físicos, psicológicos ou patrimoniais no lar.",
         "imagemSecundari": "ViolênciaDoméstica",
         "tela":"TELA6"
       },
       {
         "titulo": "titulo7",
         "temaPinciapl": "GuardaCompartilhada",
-        "textAssunto": "Direito civil em poucas palavras",
+        "textAssunto": "Responsabilidade conjunta dos pais após separação.",
         "imagemSecundari": "GuardaCompartilhada",
         "tela":"TELA7"
       },
       {
         "titulo": "titulo8",
         "temaPinciapl": "Divisão de Bens",
-        "textAssunto": "Simulador de Divisão de Bens",
-        "imagemSecundari": "splash",
+        "textAssunto": "Partilha patrimonial entre cônjuges após separação.",
+        "imagemSecundari": "GuiaDeCasamento",
         "tela":"TELA8"
       },
       {
         "titulo": "titulo9",
         "temaPinciapl": "tipos de familias ",
-        "textAssunto": "jogo da memoria",
-        "imagemSecundari": "splash",
+        "textAssunto": "jogo da memoria, Diversidade estrutural reconhecida nas formações familiares.",
+        "imagemSecundari": "TiposDeFamilias",
         "tela":"TELA9"
       },
       {
         "titulo": "titulo10",
         "temaPinciapl": "DestituiçãoPoderFamiliar",
-        "textAssunto": "Diferença entre lei e norma",
+        "textAssunto": "Retirada judicial da autoridade dos pais.",
         "imagemSecundari": "DestituiçãoPoderFamiliar",
         "tela":"TELA10"
       }

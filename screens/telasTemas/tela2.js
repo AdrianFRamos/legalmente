@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, ScrollView, View, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const faq = [
@@ -95,14 +95,14 @@ const Tela2Screen = () => {
 
   return (
     <LinearGradient
-      colors={['#2C1810', '#4A0011', '#8B0000', '#8B0000', '#8B0000', '#4A0011', '#2C1810']}
+      colors={['#A67C7C', '#8B4A52', '#5D252A']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.header}>Adoção no Brasil - FAQ</Text>
-
+        <Image source={require('../../assets/adoçãoImage.png')} style={styles.  imagem1} resizeMode='contain'/>
         {faq.map((item, index) => (
           <View key={index} style={styles.card}>
             <TouchableOpacity onPress={() => toggleAnswer(index)}>
@@ -119,12 +119,42 @@ const Tela2Screen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  scrollContainer: { padding: 16 },
-  header: { fontSize: 24, fontWeight: 'bold', color: '#FFD700', textAlign: 'center', marginBottom: 20 },
-  card: { backgroundColor: 'rgba(255,255,255,0.1)', padding: 14, borderRadius: 10, marginBottom: 12 },
-  question: { fontSize: 16, fontWeight: 'bold', color: '#FFD700', marginBottom: 5 },
-  answer: { fontSize: 14, color: '#fff', lineHeight: 20, marginTop: 5 }
+  container: { 
+    flex: 1 
+  },
+  scrollContainer: { 
+    padding: 16 
+  },
+  header: { 
+    fontSize: 24, 
+    fontWeight: 'bold', 
+    color: '#FFFFFF', 
+    textAlign: 'center',
+    marginTop: 40, 
+  },
+  card: { 
+    backgroundColor: 'rgba(255, 255, 255, 0.26)', 
+    padding: 14, 
+    borderRadius: 10, 
+    marginBottom: 12 
+  },
+  question: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    marginBottom: 5 
+  },
+  answer: { 
+    fontSize: 14, 
+    color: '#ffffffde', 
+    lineHeight: 20, 
+    marginTop: 5 
+  },
+  imagem1: {
+    width: 250,
+    height:230,
+    alignSelf: 'center',
+  },
 });
 
 export default Tela2Screen;

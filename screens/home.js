@@ -4,14 +4,15 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const lista = require('./dados/informacoes.json');
 const imagens = {
-  'splash': require('../assets/tema1.png'),
-  'IdentidadeLegal': require('../assets/identidadeLegal.jpg'),
-  'AtosInfracionais': require('../assets/atosInfracionais.jpg'),
-  'ViolênciaIntrafamiliar': require('../assets/violênciaIntrafamiliar.jpg'),
-  'Adoções': require('../assets/adoções.jpg'),
-  'ViolênciaDoméstica': require('../assets/violênciaDoméstica.jpg'),
-  'GuardaCompartilhada': require('../assets/guardaCompartilhada.jpg'),
-  'DestituiçãoPoderFamiliar': require('../assets/destituiçãoPoderFamiliar.jpg'),
+  'GuiaDeCasamento': require('../assets/guiaDeCasamento1.png'),
+  'IdentidadeLegal': require('../assets/identidadeLegal1.png'),
+  'AtosInfracionais': require('../assets/atosInfracionais1.png'),
+  'ViolênciaIntrafamiliar': require('../assets/violênciaIntrafamiliar1.png'),
+  'Adoções': require('../assets/adoções1.png'),
+  'ViolênciaDoméstica': require('../assets/violenciaDomestica1.png'),
+  'GuardaCompartilhada': require('../assets/guardaCompartilhada1.png'),
+  'TiposDeFamilias': require('../assets/tiposDeFamilias1.png'),
+  'DestituiçãoPoderFamiliar': require('../assets/destituiçãoPoderFamiliar1.png'),
 };
 const HomeScreen = ({ navigation }) =>  {
   const colorScheme = useColorScheme();
@@ -20,8 +21,8 @@ const HomeScreen = ({ navigation }) =>  {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroll} contentContainerStyle={{ paddingBottom: 35 ,backgroundColor: '#ffffff' }}>
-        <LinearGradient colors={['#8B0000', '#4A0011','#2C1810']} style={styles.headerScroll2}>
-          <Image source={require('../assets/splash.png')} style={styles.icon} resizeMode="contain"/>
+        <LinearGradient colors={['#8B4A52', '#8B4A52', '#5D252A']} style={styles.headerScroll2}>
+          <Image source={require('../assets/splash1.png')} style={styles.icon} resizeMode="contain"/>
           <Text style={styles.textTemaAplicativo}>Direito da Familia
             
           </Text>
@@ -33,7 +34,7 @@ const HomeScreen = ({ navigation }) =>  {
         {lista.ListaDados.map((item, index) => (
         <TouchableOpacity key={item.titulo} onPress={() => navigation.navigate(item.tela)}>
           <View style={styles.container}>
-            <LinearGradient colors={['#8B0000', '#4A0011','#2C1810']} start={{ x: 0, y: 0 }}  end={{ x: 1, y: 0 }}  style={styles.card}>
+            <LinearGradient colors={['#FFFFFF', '#FAF7F0','#FFFFFF']} start={{ x: 0, y: 0 }}  end={{ x: 1, y: 0 }}  style={styles.card}>
               <View style={styles.header}>
                 <Image source={imagens[item.imagemSecundari]} style={styles.postImage} />
                 <View style={styles.headerText}>
@@ -42,11 +43,6 @@ const HomeScreen = ({ navigation }) =>  {
                 </View>
               </View>
               <Text style={styles.assunto}>{item.textAssunto}</Text>
-              <View style={styles.headerScroll3}>
-                <Text style={styles.text2}>
-                  Explore os principais conceitos, leis e aplicações do Direito de Família 
-                </Text>
-              </View>
             </LinearGradient>
           </View>
         </TouchableOpacity> 
@@ -61,8 +57,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
-    paddingTop: 0,
+    backgroundColor: '#FAF7F0',
   },
   scroll: {
     paddingHorizontal: 10,
@@ -79,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#222222',
     borderRadius: 12,
     padding: 10,
-    marginBottom: 15,
+    marginBottom: 18,
     shadowColor: '#000000',
     shadowOpacity: 0.3,
     shadowRadius: 4,
@@ -94,26 +89,26 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   temaPinciapl: {
-    color: 'rgba(244, 178, 56, 1)',
+    color: '#5D252A',
     fontWeight: 'bold',
     marginTop: -10,
     fontSize: 25,
   },
   titulo: {
     marginTop: 5,
-    color: '#bbb',
+    color: '#8B4A52',
     fontSize: 20,
   },
   postImage: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    borderColor: '#f2d974ff',
-    borderWidth: 2,
+    borderColor: '#D4AF37',
+    borderWidth: 3,
     marginRight: 10,
   },
   assunto: {
-    color: '#eee',
+    color: '#A8A8A8',
     fontSize: 15,
     lineHeight: 20,
     marginLeft: 7,
@@ -126,41 +121,24 @@ const styles = StyleSheet.create({
     marginLeft: -15,
   },
   textTemaAplicativo: {
-    marginTop: 10,
-    fontSize: 22,
+    fontSize: 25,
     fontStyle: 'bold',
-    color: 'rgba(244, 178, 56, 1)',
+    color: '#FFFFFF',
     marginBottom: 5,
   },
   text1: {
-    fontSize: 10,
-    color: '#f9dc67ff',
+    fontSize: 12,
+    color: '#FFFFFF',
   },
   icon: {
-    width: 55,
-    height: 55,
-    marginTop: 55,
+    width: 60,
+    height: 60,
+    marginTop: 40,
   },
   temaAplicativo: {
     fontSize: 22,
     fontStyle: 'bold',
     color: '#ffffff',
     marginBottom: 5,
-  },
-  headerScroll3: {
-    backgroundColor: '#521627ff',
-    borderRadius: 12,
-    shadowRadius: 4,
-    alignItems: 'center',
-    width: '99%',
-    height: '30%',
-    padding: 10,
-    marginEnd:10,
-    marginTop:10,
-  },
-  text2: {
-    fontSize: 8,
-    color: '#ccc',
-    lineHeight: 20,
-  },
+  }
 });

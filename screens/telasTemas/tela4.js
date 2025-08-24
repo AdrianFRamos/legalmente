@@ -103,22 +103,22 @@ const Tela4Screen = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={["#2C1810", "#4A0011", "#8B0000", "#4A0011", "#2C1810"]}
+      colors={['#A67C7C', '#8B4A52', '#5D252A']}
       style={styles.container}
     >
       {currentQuestion < questions.length ? (
         <View style={styles.card}>
           {!showExplanation && (
-            <Image source={require('../../assets/verdadeOfalso.png')} style={styles.  imagem1} resizeMode="cover"/>
+            <Image source={require('../../assets/verdadeOfalso1.png')} style={styles.imagem1} resizeMode="cover"/>
           )}
           <Text style={styles.question}>{question.question}</Text>
           {!showExplanation ? (
             <View>
               <TouchableOpacity style={styles.button} onPress={() => handleAnswer("VERDADEIRO")}>
-                <Text style={styles.buttonText}>Verdadeiro</Text>
+                <Text style={styles.buttonText2}>Verdadeiro</Text>
               </TouchableOpacity>
               <TouchableOpacity  style={styles.button} onPress={() => handleAnswer("FALSO")} >
-                <Text style={styles.buttonText}>Falso</Text>
+                <Text style={styles.buttonText3}>Falso</Text>
               </TouchableOpacity>
             </View>
           ) : (
@@ -137,7 +137,7 @@ const Tela4Screen = ({ navigation }) => {
               </Text>
               <Text style={styles.explanation}>{question.explanation}</Text>
               <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-                <Text style={styles.buttonText}>Continuar</Text>
+                <Text style={styles.buttonText1}>Continuar</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -148,7 +148,7 @@ const Tela4Screen = ({ navigation }) => {
             🎉 Parabéns! Você concluiu todas as perguntas.
           </Text>
           <TouchableOpacity  style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
-            <Text style={styles.buttonText}>Voltar para Menu Principal</Text>
+            <Text style={styles.buttonText1}>Voltar Menu Principal</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -170,21 +170,31 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   question: {
-    fontSize: 20,
-    color: "#fff",
+    fontSize: 23,
+    color: "#FFFFFF",
     marginBottom: 20,
     fontWeight: "bold",
   },
   button: {
-    backgroundColor: "#8B0000",
+    backgroundColor: "#faf7f0e2",
     padding: 15,
     borderRadius: 10,
     marginVertical: 8,
     alignItems: "center",
   },
-  buttonText: {
-    color: "#010101ff",
-    fontSize: 20,
+  buttonText1: {
+    color: "#000000ff",
+    fontSize: 23,
+    fontWeight: "bold",
+  },
+  buttonText2: {
+    color: "#18f504ff",
+    fontSize: 23,
+    fontWeight: "bold",
+  },
+  buttonText3: {
+    color: "#fb0000ff",
+    fontSize: 23,
     fontWeight: "bold",
   },
   result: {
@@ -205,7 +215,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   nextButton: {
-    backgroundColor: "#4A0011",
+    backgroundColor: "#FFFFFF",
     padding: 15,
     borderRadius: 10,
     marginTop: 15,
@@ -233,9 +243,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imagem1: {
-    width: 210,
+    width: 250,
     height:250,
-    marginTop: -20,
+    marginTop: -10,
+    borderRadius: 200,
+    marginBottom: 20,
     margin: 25,
     alignSelf: 'center',
   },

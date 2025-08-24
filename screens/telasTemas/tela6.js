@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const Tela6Screen= () => {
   return (
-      <LinearGradient  colors={['#2C1810','#4A0011','#8B0000','#8B0000','#8B0000', '#4A0011','#2C1810' ]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.container}>
+      <LinearGradient  colors={['#A67C7C', '#8B4A52', '#5D252A']} style={styles.container}>
         <Text style={styles.text}>Tela assunto 6</Text>
       </LinearGradient>
     );

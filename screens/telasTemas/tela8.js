@@ -45,7 +45,7 @@ const Tela8Screen = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <LinearGradient colors={['#8b0000', '#a83232']} style={styles.head}>
+      <LinearGradient colors={['#A67C7C', '#8B4A52', '#5D252A']} style={styles.head}>
         <Text style={styles.mainTitle}>O título aqui</Text>
       </LinearGradient>
       <View style={styles.calcCard}>
@@ -54,7 +54,7 @@ const Tela8Screen = () => {
           Nesse campo vai ter uma breve explicação do funcionamento do simulador
           e o que ele faz, além de poder ser uma forma de orientar o usuário.
         </Text>
-        <TouchableOpacity style={styles.calclButton} onPress={() => navigation.navigate('TELA10')}>
+        <TouchableOpacity style={styles.calclButton} onPress={() => navigation.navigate('DivisionCalculator')}>
           <Text style={styles.calcButtonText}>Iniciar Simulação</Text>
         </TouchableOpacity>
       </View>
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   calclButton: {
-    backgroundColor: '#8b0000',
+    backgroundColor: '#8B4A52',
     padding: 12,
     justifyContent: 'center',
     alignItems: 'center',
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: '#8b0000',
+    backgroundColor: '#8B4A52',
     paddingHorizontal: 20,
     width: '50%',
     alignSelf: 'center',
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     marginTop: 20,
-    backgroundColor: '#8b0000',
+    backgroundColor: '#8B4A52',
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',
