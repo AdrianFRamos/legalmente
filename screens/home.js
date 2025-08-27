@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation }) =>  {
                 <Image source={imagens[item.imagemSecundari]} style={styles.postImage} />
                 <View style={styles.headerText}>
                   <Text style={styles.temaPinciapl}>{item.temaPinciapl}</Text>
-                  <Text style={styles.titulo}>{item.titulo}</Text>
+                  <Text style={styles.titulo}>{item.tituloTela}</Text>
                 </View>
               </View>
               <Text style={styles.assunto}>{item.textAssunto}</Text>

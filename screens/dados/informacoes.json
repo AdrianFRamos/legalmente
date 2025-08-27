@@ -5,6 +5,7 @@
         "temaPinciapl": "AtosInfracionais",
         "textAssunto": "Condutas ilegais praticadas por adolescentes menores.",
         "imagemSecundari": "AtosInfracionais",
+        "tituloTela": "Quiz - Informativo",
         "tela": "TELA1"
       },
       {
@@ -12,6 +13,7 @@
         "temaPinciapl": "Adoções",
         "textAssunto": "Ato legal de integrar criança à família",
         "imagemSecundari": "Adoções",
+        "tituloTela":"Quiz - Informativo",
         "tela":"TELA2"
       },
       {
@@ -19,6 +21,7 @@
         "temaPinciapl": "GuiaDeCasamento",
         "textAssunto": "Orientações práticas para vida conjugal saudável.",
         "imagemSecundari": "GuiaDeCasamento",
+        "tituloTela":"titulo3",
         "tela":"TELA3"
       },
       {
@@ -26,6 +29,7 @@
         "temaPinciapl": "ViolênciaIntrafamiliar",
         "textAssunto": "Agressões ocorridas dentro do ambiente familiar.",
         "imagemSecundari": "ViolênciaIntrafamiliar",
+        "tituloTela":"Quiz - Verdadeiro ou Falso",
         "tela":"TELA4"
       },
       {
@@ -33,6 +37,7 @@
         "temaPinciapl": "IdentidadeLegal",
         "textAssunto": "Reconhecimento jurídico da diversidade de gênero sexual.",
         "imagemSecundari": "IdentidadeLegal",
+        "tituloTela":"titulo5",
         "tela":"TELA5"
       },
       {
@@ -40,35 +45,32 @@
         "temaPinciapl": "ViolênciaDoméstica",
         "textAssunto": "Abusos físicos, psicológicos ou patrimoniais no lar.",
         "imagemSecundari": "ViolênciaDoméstica",
+        "tituloTela":"Quiz - Informativo",
         "tela":"TELA6"
       },
       {
         "titulo": "titulo7",
-        "temaPinciapl": "GuardaCompartilhada",
-        "textAssunto": "Responsabilidade conjunta dos pais após separação.",
-        "imagemSecundari": "GuardaCompartilhada",
+        "temaPinciapl": "Divisão de Bens",
+        "textAssunto": "Partilha patrimonial entre cônjuges após separação.",
+        "imagemSecundari": "GuiaDeCasamento",
+        "tituloTela":"Simulador de divisão de bens",
         "tela":"TELA7"
       },
       {
         "titulo": "titulo8",
-        "temaPinciapl": "Divisão de Bens",
-        "textAssunto": "Partilha patrimonial entre cônjuges após separação.",
-        "imagemSecundari": "GuiaDeCasamento",
+        "temaPinciapl": "tipos de familias ",
+        "textAssunto": "jogo da memoria, Diversidade estrutural reconhecida nas formações familiares.",
+        "imagemSecundari": "TiposDeFamilias",
+        "tituloTela":"Jogo da memoria",
         "tela":"TELA8"
       },
       {
         "titulo": "titulo9",
-        "temaPinciapl": "tipos de familias ",
-        "textAssunto": "jogo da memoria, Diversidade estrutural reconhecida nas formações familiares.",
-        "imagemSecundari": "TiposDeFamilias",
-        "tela":"TELA9"
-      },
-      {
-        "titulo": "titulo10",
         "temaPinciapl": "DestituiçãoPoderFamiliar",
         "textAssunto": "Retirada judicial da autoridade dos pais.",
         "imagemSecundari": "DestituiçãoPoderFamiliar",
-        "tela":"TELA10"
+        "tituloTela":"Quiz - Informativo",
+        "tela":"TELA9"
       }
   ]
 }
