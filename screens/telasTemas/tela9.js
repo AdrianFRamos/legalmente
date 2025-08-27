@@ -1,290 +1,271 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 
-// ---------- COMPONENTE CARD ----------
-function Card({ isFlipped, onPress, image, resizeModeType = "cover" }) {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.card} activeOpacity={0.8}>
-      <Image
-        source={isFlipped ? image : require('../../assets/jogoMemoria/backCard.png')}
-        style={styles.image}
-        resizeMode={resizeModeType}
-      />
-    </TouchableOpacity>
-  );
-}
-
-// ---------- LISTA DE IMAGENS DO JOGO ----------
-const images = [
-  { img: require('../../assets/jogoMemoria/frontCard1.png'), pairId: 1 },
-  { img: require('../../assets/jogoMemoria/frontCard2.png'), pairId: 2 },
-  { img: require('../../assets/jogoMemoria/frontCard3.png'), pairId: 3 },
-  { img: require('../../assets/jogoMemoria/frontCard4.png'), pairId: 4 },
-  { img: require('../../assets/jogoMemoria/frontCard5.png'), pairId: 5 },
-  { img: require('../../assets/jogoMemoria/frontCard6.png'), pairId: 6 },
-  { img: require('../../assets/jogoMemoria/frontCard7.png'), pairId: 7 },
-  { img: require('../../assets/jogoMemoria/frontCard8.png'), pairId: 8 },
-  { img: require('../../assets/jogoMemoria/frontCardImg1.png'), pairId: 1 },
-  { img: require('../../assets/jogoMemoria/frontCardImg2.png'), pairId: 2 },
-  { img: require('../../assets/jogoMemoria/frontCardImg3.png'), pairId: 3 },
-  { img: require('../../assets/jogoMemoria/frontCardImg4.png'), pairId: 4 },
-  { img: require('../../assets/jogoMemoria/frontCardImg5.png'), pairId: 5 },
-  { img: require('../../assets/jogoMemoria/frontCardImg6.png'), pairId: 6 },
-  { img: require('../../assets/jogoMemoria/frontCardImg7.png'), pairId: 7 },
-  { img: require('../../assets/jogoMemoria/frontCardImg8.png'), pairId: 8 },
+const questions = [
+  {
+    question: "O poder familiar é o conjunto de direitos e deveres dos pais em relação aos filhos menores, como o dever de cuidar, educar, sustentar e proteger. Mas em casos graves, esse poder pode ser retirado judicialmente. Com base nisso, qual das situações abaixo justifica a destituição do poder familiar?",
+    options: [
+      "Apenas notificar os pais da ação",
+      "Defender os interesses dos pais",
+      "Atuar obrigatoriamente no processo, protegendo o interesse da criança"
+    ],
+    answer: "Atuar obrigatoriamente no processo, protegendo o interesse da criança",
+    explanation: "A destituição do poder familiar é uma medida extrema e só ocorre quando há situações graves, como abandono, maus-tratos, violência física ou psicológica, ou comportamento contrário à moral e aos bons costumes (art. 1.638 do Código Civil e arts. 22-24 do ECA)."
+  },
+  {
+    question: "Imagine que uma criança está sendo negligenciada pelos pais: não recebe alimentação adequada, não vai à escola e vive em situação de risco. Quem pode tomar providências legais para proteger a criança e, eventualmente, pedir a destituição do poder familiar?",
+    options: ["Apenas um parente próximo", "Ministério Público ou qualquer pessoa com legitimo interesse", "Somente a própria criança"],
+    answer: "Ministério Público ou qualquer pessoa com legitimo interesse",
+    explanation: "O art. 155 do ECA autoriza que o Ministério Público ou qualquer pessoa com legítimo interesse proponham a ação judicial, sempre visando o melhor interesse da criança."
+  },
+  {
+    question: "A destituição do poder familiar pode ser decidida de forma rápida e sem defesa pelos pais?",
+    options: ["Sim, se for urgente", "Sim, desde que o juiz ouça o Conselho Tutelar", "Não, é preciso decisão judicial com direito à defesa e prova"],
+    answer: "Não, é preciso decisão judicial com direito à defesa e prova",
+    explanation: "Segundo o CPC (art. 693 e seguintes) e o ECA (arts. 23 e 24), a destituição depende de processo judicial, com ampla defesa e provas. Os pais devem ser ouvidos antes da decisão do juiz."
+  },
+  {
+    question: "Quando o juiz decide pela destituição do poder familiar, o que acontece com os direitos dos pais sobre o filho?",
+    options: ["Eles continuam podendo visitar e decidir sobre a educação da criança", "Eles perdem todos os direitos e deveres em relação ao filho", "Eles continuam responsáveis financeiramente, mas sem convivência"],
+    answer: "Eles perdem todos os direitos e deveres em relação ao filho",
+    explanation: "A destituição do poder familiar resulta na perda completa dos direitos e deveres parentais (ECA, art. 24 e CC, art. 1.638)."
+  },
+  {
+    question: "Em casos de destituição do poder familiar, qual é o papel do Ministério Público?",
+    options: ["Apenas notificar os pais da ação", "Defender os interesses dos pais", "Atuar obrigatoriamente no processo, protegendo o interesse da criança"],
+    answer: "Atuar obrigatoriamente no processo, protegendo o interesse da criança",
+    explanation: "O MP atua como fiscal da lei e defensor dos interesses da criança, sendo obrigatória sua participação (CPC, art. 178, II e ECA, art. 201, III)."
+  },
 ];
 
-// ---------- LISTA DE TÓPICOS ----------
-const familyTopics = [
-  {
-    titulo: 'Família Unipessoal',
-    imagem: require('../../assets/jogoMemoria/familyImg1.png'),
-    explicacao: 'Composta por uma única pessoa que vive sozinha, cada vez mais comum na sociedade moderna.'
-  },
-  {
-    titulo: 'Família Adotiva',
-    imagem: require('../../assets/jogoMemoria/familyImg2.png'),
-    explicacao: 'Formada através de adoção legal de criança, criando vínculos afetivos e jurídicos permanentes.'
-  },
-  {
-    titulo: 'Família Monoparental',
-    imagem: require('../../assets/jogoMemoria/familyImg3.png'),
-    explicacao: 'Formada por apenas um dos pais e seus filhos, seja por divórcio, viuvez ou escolha.'
-  },
-  {
-    titulo: 'Família Reconstituída',
-    imagem: require('../../assets/jogoMemoria/familyImg4.png'),
-    explicacao: 'Quando um ou ambos os cônjuges trazem filhos de relacionamentos anteriores.'
-  },
-  {
-    titulo: 'Família Anaparental',
-    imagem: require('../../assets/jogoMemoria/familyImg5.png'),
-    explicacao: 'Constituída por irmãos ou parentes que vivem juntos, sem presença de pais.'
-  },
-  {
-    titulo: 'Família Nuclear',
-    imagem: require('../../assets/jogoMemoria/familyImg6.png'),
-    explicacao: 'Pai, mãe e filhos vivendo na mesma casa. Modelo tradicional.'
-  },
-  {
-    titulo: 'Família Extensa',
-    imagem: require('../../assets/jogoMemoria/familyImg7.png'),
-    explicacao: 'Inclui avós, tios e primos vivendo juntos ou mantendo vínculos próximos.'
-  },
-  {
-    titulo: 'Família Homoafetiva',
-    imagem: require('../../assets/jogoMemoria/familyImg8.png'),
-    explicacao: 'Casal do mesmo sexo, com ou sem filhos, reconhecida legalmente no Brasil.'
-  }
-];
+const Tela9Screen = () => {
+  const navigation = useNavigation();
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const [showResult, setShowResult] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [showExplanation, setShowExplanation] = useState(false);
 
-// ---------- FUNÇÃO PARA EMBARALHAR ----------
-const createShuffledDeck = () => {
-  return images
-    .map((card, index) => ({
-      id: index + '_' + Math.random(),
-      image: card.img,
-      pairId: card.pairId,
-      isFlipped: false,
-      isMatched: false,
-    }))
-    .sort(() => Math.random() - 0.5);
-};
+  const handleAnswer = (option) => {
+    setSelectedAnswer(option);
+    setShowExplanation(true);
 
-export default function Tela9Screen() {
-  const [deck, setDeck] = useState(createShuffledDeck());
-  const [selectedCards, setSelectedCards] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [showTopics, setShowTopics] = useState(false);
-
-  const handleCardPress = (index) => {
-    if (deck[index].isFlipped || selectedCards.length === 2) return;
-
-    const newDeck = [...deck];
-    newDeck[index].isFlipped = true;
-    setDeck(newDeck);
-    setSelectedCards([...selectedCards, { ...newDeck[index], index }]);
+    const newAnswers = [...answers];
+    newAnswers[currentIndex] = option;
+    setAnswers(newAnswers);
   };
 
-  useEffect(() => {
-    if (selectedCards.length === 2) {
-      const [first, second] = selectedCards;
+  const handleNext = () => {
+    setShowExplanation(false);
+    setSelectedAnswer(null);
 
-      if (first.pairId === second.pairId) {
-        const updatedDeck = [...deck];
-        updatedDeck[first.index].isMatched = true;
-        updatedDeck[second.index].isMatched = true;
-        setDeck(updatedDeck);
-        setSelectedCards([]);
-      } else {
-        setTimeout(() => {
-          const updatedDeck = [...deck];
-          updatedDeck[first.index].isFlipped = false;
-          updatedDeck[second.index].isFlipped = false;
-          setDeck(updatedDeck);
-          setSelectedCards([]);
-        }, 1000);
-      }
+    if (currentIndex + 1 < questions.length) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setShowResult(true);
     }
-  }, [selectedCards]);
+  };
 
-  useEffect(() => {
-    if (deck.every((card) => card.isMatched)) {
-      setModalVisible(true);
-    }
-  }, [deck]);
+  const restartQuiz = () => {
+    setAnswers([]);
+    setCurrentIndex(0);
+    setShowResult(false);
+    setQuizStarted(false);
+  };
 
   return (
-    <LinearGradient colors={['#A67C7C', '#8B4A52', '#5D252A']} style={styles.container}>
-      <ScrollView contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }}>
-        <Text style={styles.title}>Jogo da Memória - Família</Text>
-        <FlatList data={deck} keyExtractor={(item) => item.id} 
-          columnWrapperStyle={{ gap: 0, justifyContent: 'center' }} // espaçamento horizontal
-          numColumns={4} 
-          renderItem={({ item, index }) => (
-            <Card image={item.image} isFlipped={item.isFlipped || item.isMatched} 
-              onPress={() => handleCardPress(index)}resizeModeType="stretch" 
-            />
-          )}
-          scrollEnabled={false}
-          contentContainerStyle={[styles.board, { rowGap: 3 }]} // espaçamento vertical
-          style={{ width: '95%', height: '100%' }} 
-        />
-        <View style={styles.topicContainer}>
-         <TouchableOpacity onPress={() => setShowTopics(!showTopics)}>
-            <Text style={styles.topicBodyTitle}>
-              {showTopics ? 'Ocultar detalhes' : 'Clique para mais detalhes'}
-            </Text>
+    <LinearGradient
+      colors={['#A67C7C', '#8B4A52', '#5D252A']}
+      style={styles.container}
+    >
+      {!quizStarted ? (
+        <View style={styles.startContainer}>
+          <Text style={styles.mainTitle}>Teste seus conhecimentos!</Text>
+          <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg} />
+          <Text style={styles.startTitle}>Responda ao quiz sobre a destituição do poder familiar.</Text>
+          <TouchableOpacity style={styles.startButton} onPress={() => setQuizStarted(true)}>
+            <Text style={styles.buttonText}>Começar Quiz</Text>
           </TouchableOpacity>
-          {showTopics && (
-            <View style={styles.topicTbody}>
-              {familyTopics.map((topic, index) => (
-                <View key={index} style={styles.topicCard}>
-                  <Text style={styles.topicCardTitle}>{topic.titulo}</Text>
-                  <Image source={topic.imagem} style={styles.topicCardImage}/>
-                  <Text style={styles.topicCardText}>{topic.explicacao}</Text>
-                </View>
+        </View>
+      ) : showResult ? (
+        <View style={styles.resultContainer}>
+          <Image source={require('../../assets/quiz/trophyImg.png')} style={styles.feedbackImg} />
+          <Text style={styles.resultTitle}>Parabéns você concluiu o quiz!</Text>
+          <Text style={styles.resultText}>
+            Você acertou {answers.filter((a, i) => a === questions[i].answer).length} de {questions.length}
+          </Text>
+          <Text style={styles.resultPhrase}>
+            Continue estudando para fortalecer seus conhecimentos em direito de família.
+          </Text>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("TELA10Final")}>
+            <Text style={styles.buttonText}>Continuar</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <ScrollView contentContainerStyle={styles.quizContainer}>
+          {!showExplanation ? (
+            <>
+              <Text style={styles.question}>{questions[currentIndex].question}</Text>
+              {questions[currentIndex].options.map((option, i) => (
+                <TouchableOpacity
+                  key={i}
+                  style={styles.optionButton}
+                  onPress={() => handleAnswer(option)}
+                >
+                  <Text style={styles.optionText}>{option}</Text>
+                </TouchableOpacity>
               ))}
+            </>
+          ) : (
+            <View style={styles.explanationContainer}>
+              {selectedAnswer === questions[currentIndex].answer ? (
+                <>
+                  <Image source={require("../../assets/quiz/correctImg.png")} style={styles.feedbackImg} />
+                  <Text style={styles.feedbackText}>Correto</Text>
+                </>
+              ) : (
+                <>
+                  <Image source={require("../../assets/quiz/incorrectImg.png")} style={styles.feedbackImg} />
+                  <Text style={styles.feedbackText}>Incorreto</Text>
+                </>
+              )}
+              <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
+              <TouchableOpacity style={styles.button} onPress={handleNext}>
+                <Text style={styles.buttonText}>Próxima</Text>
+              </TouchableOpacity>
             </View>
           )}
-        </View>
-      </ScrollView>
-      <Modal visible={modalVisible} transparent animationType="fade">
-        <View style={styles.modalBackground}>
-          <View style={styles.modalContainer}>
-            <TouchableOpacity style={styles.button}
-              onPress={() => { setDeck(createShuffledDeck()); setModalVisible(false);}}>
-              <Text style={styles.buttonText}>Jogar Novamente</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+        </ScrollView>
+      )}
     </LinearGradient>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 45
+  container: { 
+    flex: 1, 
+    padding: 12 
   },
-  title: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginVertical: 15
+  startContainer: { 
+    flex: 1, 
+    justifyContent: "space-between", 
+    paddingVertical: 60, 
+    alignItems: "center" 
   },
-  board: {
-    paddingBottom: 10,
+  mainTitle: { 
+    fontSize: 40, 
+    marginTop: 60,
+    textAlign: "center", 
+    fontWeight: "bold", 
+    color: "#FFFFFF" 
   },
-  card: {
-    width: 82,
-    height: 145,
-    margin: 2,
-    marginHorizontal: 3,
-    borderRadius: 8,
+  mainImg: { 
+    width: 300, 
+    height: 240, 
+    resizeMode: "cover", 
+    borderRadius: 12 
   },
-  image: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 10,
+  startTitle: { 
+    fontSize: 24, 
+    marginHorizontal: 20, 
+    textAlign: "center", 
+    color: "#FFFFFF" 
   },
-  topicContainer: {
-    marginTop: 10,
-    width: '100%',
-    alignItems: 'center'
+  startButton: { 
+    backgroundColor: "#FFFFFF", 
+    padding: 18, 
+    borderRadius: 20, 
+    width: "80%", 
+    marginBottom: 20 
   },
-  topicBodyTitle: {
-    width: 340,
-    height: 35,
-    fontSize: 18,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    backgroundColor: '#5D252A',
-    borderRadius: 8,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    marginBottom: 15,
-    paddingHorizontal: 30
+  quizContainer: { 
+    flexGrow: 1, 
+    justifyContent: "center" 
   },
-  topicTbody: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+  question: { 
+    fontSize: 22, 
+    fontWeight: "bold", 
+    textAlign: "center", 
+    color: "#FFFFFF", 
+    marginBottom: 15 ,
+    marginBottom: 50,
   },
-  topicCard: {
-    width: '41%',
-    margin: 5,
-    backgroundColor: '#fff',
-    padding: 10,
-    borderRadius: 10,
-    elevation: 3
+  optionButton: { 
+    backgroundColor: "#FFFFFF", 
+    padding: 16, 
+    borderRadius: 15, 
+    marginVertical: 8 
   },
-  topicCardTitle: {
-    color: '#5D252A',
-    fontWeight: 'bold',
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 5
+  optionText: { 
+    color: "#5D252A", 
+    fontSize: 20, 
+    textAlign: "center",
+    fontWeight: "bold", 
   },
-  topicCardImage: {
-    width: '70%',
-    height: 100,
-    resizeMode: 'cover',
-    alignSelf: 'center',
-    marginBottom: 2,
-    borderRadius: 20,
+  explanationContainer: { 
+    marginTop: 20, 
+    alignItems: "center"
   },
-  topicCardText: {
-    color: '#8B4A52',
-    fontSize: 14,
-    textAlign: 'justify',
+  explanationText: { 
+    fontSize: 20, 
+    textAlign: "center", 
+    padding: 20, 
+    color: "#562126ff",
+    fontWeight: "bold", 
   },
-  modalBackground: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+  feedbackImg: { 
+    resizeMode: "cover", 
+    width: 200, 
+    height: 200 
   },
-  modalContainer: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 15,
-    alignItems: 'center',
-    width: '80%',
+  feedbackText: { 
+    margin: 5, 
+    fontSize: 45, 
+    color: "#5D252A", 
+    fontWeight: "bold" 
   },
-  button: {
-    backgroundColor: '#d4af37',
-    padding: 12,
-    borderRadius: 8,
-    marginTop: 10,
-    width: '100%',
-    alignItems: 'center',
+  resultContainer: { 
+    flex: 1, 
+    alignItems: "center", 
+    justifyContent: "center" 
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-  }
+  resultTitle: { 
+    fontSize: 36, 
+    fontWeight: "bold", 
+    marginBottom: 10,
+    textAlign: "center", 
+    color: "#FFFFFF" 
+  },
+  resultPhrase: { 
+    textAlign: "center", 
+    fontSize: 22,
+    padding: 5, 
+    marginBottom: 15, 
+    color: "#5D252A",
+    fontWeight: "light", 
+  },
+  resultText: { 
+    fontSize: 24, 
+    margin: 20, 
+    color: "#5D252A",
+    fontWeight: "bold",  
+  },
+  button: { 
+    backgroundColor: "#FFFFFF", 
+    padding: 18, 
+    borderRadius: 20, 
+    marginVertical: 6, 
+    width: "80%" 
+  },
+  buttonText: { 
+    color: "#5D252A", 
+    fontWeight: "bold", 
+    fontSize: 20, 
+    textAlign: "center" 
+  },
 });
+
+export default Tela9Screen;

@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 20,
     marginLeft: 7,
+    textAlign: 'justify',
   },
    headerScroll2: {
     alignItems: 'center',
