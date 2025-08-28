@@ -1,0 +1,138 @@
+{
+  "mulheres": {
+    "titulo": "Questionário para Mulheres",
+    "imagemTema": "ViolenciaMulher",
+    "criticas": [2, 3],
+    "perguntas": [
+      {
+        "texto": "Seu parceiro(a) costuma gritar com você ou te humilhar, especialmente na frente de outras pessoas?",
+        "opcoes": ["A) Sim, com frequência", "B) Às vezes", "C) Nunca"]
+      },
+      {
+        "texto": "Ele(a) já te empurrou, bateu, segurou com força ou machucou de alguma forma?",
+        "opcoes": ["A) Sim", "B) Só em discussões mais sérias", "C) Nunca"]
+      },
+      {
+        "texto": "Você sente medo de expressar sua opinião ou discordar dele(a)?",
+        "opcoes": ["A) Sim, sempre evito conflitos", "B) Depende do assunto", "C) Não, conversamos com respeito"]
+      },
+      {
+        "texto": "Já foi chamado(a) de palavras ofensivas como 'burra', 'incapaz', 'louca', 'nada sem mim'?",
+        "opcoes": ["A) Sim, com frequência", "B) Raramente, mas já aconteceu", "C) Nunca"]
+      },
+      {
+        "texto": "Ele(a) já fez você se sentir culpado(a) por situações em que a culpa não era sua?",
+        "opcoes": ["A) Com frequência", "B) Às vezes", "C) Não"]
+      }
+    ],
+    "interpretacao": {
+        "A": "🔴 Alerta Vermelho! Foram identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
+        "B": "🟡 Sinal de Atenção! Existem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
+        "C": "🟢 Situação Positiva! No momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
+        "critica": "🚨 Alerta Imediato! Sua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
+    }
+  },
+
+  "homens": {
+    "titulo": "Questionário para Homens",
+    "imagemTema": "ViolenciaHomem",
+    "criticas": [1, 4, 5],
+    "perguntas": [
+      {
+        "texto": "Você já foi agredido fisicamente ou ameaçado por sua parceira ou familiar?",
+        "opcoes": ["A) Sim", "B) Uma vez só", "C) Nunca"]
+      },
+      {
+        "texto": "Você sente que não pode expressar o que sente porque será ridicularizado ou invalidado?",
+        "opcoes": ["A) Sim", "B) Às vezes", "C) Não"]
+      },
+      {
+        "texto": "Ela (ou ele) já tentou te isolar dos seus amigos, família ou colegas?",
+        "opcoes": ["A) Sim", "B) Já sugeriu isso", "C) Não"]
+      },
+      {
+        "texto": "Você já teve medo de dizer 'não' para não causar briga ou ser desrespeitado?",
+        "opcoes": ["A) Sim", "B) Às vezes", "C) Não"]
+      },
+      {
+        "texto": "Você sente que precisa esconder o que vive em casa por vergonha ou medo de ser desacreditado?",
+        "opcoes": ["A) Sim", "B) Às vezes", "C) Não"]
+      }
+    ],
+    "interpretacao": {
+        "A": "🔴 Alerta Vermelho! Foram identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
+        "B": "🟡 Sinal de Atenção! Existem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
+        "C": "🟢 Situação Positiva! No momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
+        "critica": "🚨 Alerta Imediato! Sua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
+    }
+  },
+
+  "criancas": {
+    "titulo": "Questionário para Crianças",
+    "imagemTema": "ViolenciaCrianca",
+    "criticas": [2, 4],
+    "perguntas": [
+      {
+        "texto": "Você sente medo de alguém dentro da sua casa?",
+        "opcoes": ["A) Sim", "B) Às vezes", "C) Não"]
+      },
+      {
+        "texto": "Alguém já te bateu, empurrou ou te machucou quando estava bravo(a)?",
+        "opcoes": ["A) Sim", "B) Uma vez só", "C) Nunca"]
+      },
+      {
+        "texto": "Alguém já te chamou de nomes feios ou fez você se sentir triste de propósito?",
+        "opcoes": ["A) Sim", "B) De vez em quando", "C) Não"]
+      },
+      {
+        "texto": "Você tem medo de contar o que acontece em casa para um adulto ou professor?",
+        "opcoes": ["A) Sim", "B) Um pouco", "C) Não"]
+      },
+      {
+        "texto": "Tem algo acontecendo na sua casa que você queria que fosse diferente?",
+        "opcoes": ["A) Sim, muita coisa", "B) Algumas coisas", "C) Não, está tudo bem"]
+      }
+    ],
+    "interpretacao": {
+        "A": "🔴 Alerta Vermelho! Foram identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
+        "B": "🟡 Sinal de Atenção! Existem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
+        "C": "🟢 Situação Positiva! No momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
+        "critica": "🚨 Alerta Imediato! Sua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
+    }
+  },
+
+  "idosos": {
+    "titulo": "Questionário para Idosos",
+    "imagemTema": "ViolenciaIdoso",
+    "criticas": [3, 4],
+    "perguntas": [
+      {
+        "texto": "Alguém já te impediu de tomar suas próprias decisões ou te trata como se você não soubesse nada?",
+        "opcoes": ["A) Sim", "B) Às vezes", "C) Não"]
+      },
+      {
+        "texto": "Você sente que alguém da sua família te ameaça, grita ou faz você se sentir culpado(a)?",
+        "opcoes": ["A) Sim", "B) Às vezes", "C) Não"]
+      },
+      {
+        "texto": "Teu dinheiro ou aposentadoria é controlado por outra pessoa sem você querer?",
+        "opcoes": ["A) Sim", "B) Em parte", "C) Não"]
+      },
+      {
+        "texto": "Alguém já te machucou, empurrou ou deixou você sem ajuda quando precisava?",
+        "opcoes": ["A) Sim", "B) Uma vez só", "C) Não"]
+      },
+      {
+        "texto": "Você já sentiu que não é mais bem-vindo(a) ou que está sendo 'um peso'?",
+        "opcoes": ["A) Sim", "B) Às vezes", "C) Não"]
+      }
+    ],
+    "interpretacao": {
+        "A": "🔴 Alerta Vermelho! Foram identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
+        "B": "🟡 Sinal de Atenção! Existem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
+        "C": "🟢 Situação Positiva! No momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
+        "critica": "🚨 Alerta Imediato! Sua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
+    }
+
+  }
+}
