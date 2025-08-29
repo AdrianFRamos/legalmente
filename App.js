@@ -12,6 +12,7 @@ import Tela6Screen from './screens/telasTemas/tela6';
 import Tela7Screen from './screens/telasTemas/tela7';
 import Tela8Screen from './screens/telasTemas/tela8';
 import Tela9Screen from './screens/telasTemas/tela9';
+import Tela10Screen from './screens/telasTemas/tela10';
 import DivisionCalculator from './screens/telasTemas/secondScreen/DivisionCalculator';
 import RegimeScreen from './screens/telasTemas/secondScreen/RegimeScreen';
 import tela10Final from './screens/telasTemas/secondScreen/tela10Final';
@@ -34,6 +35,7 @@ export default function App() {
         <Stack.Screen name="TELA7" component={Tela7Screen} />
         <Stack.Screen name="TELA8" component={Tela8Screen} />
         <Stack.Screen name="TELA9" component={Tela9Screen} />
+        <Stack.Screen name="TELA10" component={Tela10Screen} />
         <Stack.Screen name="TELA10Final" component={tela10Final}/>
         <Stack.Screen name="DivisionCalculator" component={DivisionCalculator}/>
         <Stack.Screen name="Regime" component={RegimeScreen}/>

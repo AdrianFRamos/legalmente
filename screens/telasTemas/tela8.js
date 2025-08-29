@@ -1,290 +1,241 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import {  Text, StyleSheet, View, ScrollView, TouchableOpacity, Image,  Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 
-// ---------- COMPONENTE CARD ----------
-function Card({ isFlipped, onPress, image, resizeModeType = "cover" }) {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.card} activeOpacity={0.8}>
-      <Image
-        source={isFlipped ? image : require('../../assets/jogoMemoria/backCard.png')}
-        style={styles.image}
-        resizeMode={resizeModeType}
-      />
-    </TouchableOpacity>
-  );
-}
-
-// ---------- LISTA DE IMAGENS DO JOGO ----------
-const images = [
-  { img: require('../../assets/jogoMemoria/frontCard1.png'), pairId: 1 },
-  { img: require('../../assets/jogoMemoria/frontCard2.png'), pairId: 2 },
-  { img: require('../../assets/jogoMemoria/frontCard3.png'), pairId: 3 },
-  { img: require('../../assets/jogoMemoria/frontCard4.png'), pairId: 4 },
-  { img: require('../../assets/jogoMemoria/frontCard5.png'), pairId: 5 },
-  { img: require('../../assets/jogoMemoria/frontCard6.png'), pairId: 6 },
-  { img: require('../../assets/jogoMemoria/frontCard7.png'), pairId: 7 },
-  { img: require('../../assets/jogoMemoria/frontCard8.png'), pairId: 8 },
-  { img: require('../../assets/jogoMemoria/frontCardImg1.png'), pairId: 1 },
-  { img: require('../../assets/jogoMemoria/frontCardImg2.png'), pairId: 2 },
-  { img: require('../../assets/jogoMemoria/frontCardImg3.png'), pairId: 3 },
-  { img: require('../../assets/jogoMemoria/frontCardImg4.png'), pairId: 4 },
-  { img: require('../../assets/jogoMemoria/frontCardImg5.png'), pairId: 5 },
-  { img: require('../../assets/jogoMemoria/frontCardImg6.png'), pairId: 6 },
-  { img: require('../../assets/jogoMemoria/frontCardImg7.png'), pairId: 7 },
-  { img: require('../../assets/jogoMemoria/frontCardImg8.png'), pairId: 8 },
+const topics = [
+  {
+    title: 'O que é União Estável',
+    summary:
+      'União estável é a convivência pública, contínua e duradoura entre duas pessoas com o objetivo de construir família, sem a necessidade de casamento formal. Ela é reconhecida legalmente e garante direitos e deveres aos parceiros',
+    subTitle: 'Definição:',
+    explanation:
+      'É a convivência pública, contínua e duradoura entre duas pessoas, com objetivo de constituir família. Não exige casamento formal. Pode ser reconhecida:',
+    characteristics: [
+      'Por escritura pública no cartório;',
+      'Judicialmente, em caso de disputa.',
+    ],
+    legalBasis: 'Art. 1.723 do Código Civil',
+    icon: require('../../assets/calculadorabens/modalIcon2.png'),
+  },
+  {
+    title: 'Direito de Sucessão na União Estável',
+    summary:
+      'Na união estável, o companheiro(a) tem direitos sucessórios semelhantes aos do cônjuge no casamento civil. Isso significa que, em caso de falecimento, ele pode herdar bens do parceiro. É importante destacar que o direito à herança depende da comprovação da união estável e da inexistência de testamento em contrário',
+    subTitle: '',
+    explanation: '',
+    characteristics: [
+      'União estável deve ser pública, contínua e duradoura;',
+      'Companheiro(a) não pode estar só(a) em relação concorrencial ao falecido(a).',
+    ],
+    legalBasis: 'Código Civil, Art. 1.723',
+    icon: require('../../assets/calculadorabens/modalIcon1.png'),
+  },
 ];
 
-// ---------- LISTA DE TÓPICOS ----------
-const familyTopics = [
-  {
-    titulo: 'Família Unipessoal',
-    imagem: require('../../assets/jogoMemoria/familyImg1.png'),
-    explicacao: 'Composta por uma única pessoa que vive sozinha, cada vez mais comum na sociedade moderna.'
-  },
-  {
-    titulo: 'Família Adotiva',
-    imagem: require('../../assets/jogoMemoria/familyImg2.png'),
-    explicacao: 'Formada através de adoção legal de criança, criando vínculos afetivos e jurídicos permanentes.'
-  },
-  {
-    titulo: 'Família Monoparental',
-    imagem: require('../../assets/jogoMemoria/familyImg3.png'),
-    explicacao: 'Formada por apenas um dos pais e seus filhos, seja por divórcio, viuvez ou escolha.'
-  },
-  {
-    titulo: 'Família Reconstituída',
-    imagem: require('../../assets/jogoMemoria/familyImg4.png'),
-    explicacao: 'Quando um ou ambos os cônjuges trazem filhos de relacionamentos anteriores.'
-  },
-  {
-    titulo: 'Família Anaparental',
-    imagem: require('../../assets/jogoMemoria/familyImg5.png'),
-    explicacao: 'Constituída por irmãos ou parentes que vivem juntos, sem presença de pais.'
-  },
-  {
-    titulo: 'Família Nuclear',
-    imagem: require('../../assets/jogoMemoria/familyImg6.png'),
-    explicacao: 'Pai, mãe e filhos vivendo na mesma casa. Modelo tradicional.'
-  },
-  {
-    titulo: 'Família Extensa',
-    imagem: require('../../assets/jogoMemoria/familyImg7.png'),
-    explicacao: 'Inclui avós, tios e primos vivendo juntos ou mantendo vínculos próximos.'
-  },
-  {
-    titulo: 'Família Homoafetiva',
-    imagem: require('../../assets/jogoMemoria/familyImg8.png'),
-    explicacao: 'Casal do mesmo sexo, com ou sem filhos, reconhecida legalmente no Brasil.'
-  }
-];
-
-// ---------- FUNÇÃO PARA EMBARALHAR ----------
-const createShuffledDeck = () => {
-  return images
-    .map((card, index) => ({
-      id: index + '_' + Math.random(),
-      image: card.img,
-      pairId: card.pairId,
-      isFlipped: false,
-      isMatched: false,
-    }))
-    .sort(() => Math.random() - 0.5);
-};
-
-export default function Tela8Screen() {
-  const [deck, setDeck] = useState(createShuffledDeck());
-  const [selectedCards, setSelectedCards] = useState([]);
+const Tela8Screen = () => {
+  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
-  const [showTopics, setShowTopics] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState(null);
 
-  const handleCardPress = (index) => {
-    if (deck[index].isFlipped || selectedCards.length === 2) return;
-
-    const newDeck = [...deck];
-    newDeck[index].isFlipped = true;
-    setDeck(newDeck);
-    setSelectedCards([...selectedCards, { ...newDeck[index], index }]);
+  const openModal = (topic) => {
+    setSelectedTopic(topic);
+    setModalVisible(true);
   };
 
-  useEffect(() => {
-    if (selectedCards.length === 2) {
-      const [first, second] = selectedCards;
-
-      if (first.pairId === second.pairId) {
-        const updatedDeck = [...deck];
-        updatedDeck[first.index].isMatched = true;
-        updatedDeck[second.index].isMatched = true;
-        setDeck(updatedDeck);
-        setSelectedCards([]);
-      } else {
-        setTimeout(() => {
-          const updatedDeck = [...deck];
-          updatedDeck[first.index].isFlipped = false;
-          updatedDeck[second.index].isFlipped = false;
-          setDeck(updatedDeck);
-          setSelectedCards([]);
-        }, 1000);
-      }
-    }
-  }, [selectedCards]);
-
-  useEffect(() => {
-    if (deck.every((card) => card.isMatched)) {
-      setModalVisible(true);
-    }
-  }, [deck]);
-
   return (
-    <LinearGradient colors={['#A67C7C', '#8B4A52', '#5D252A']} style={styles.container}>
-      <ScrollView contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }}>
-        <Text style={styles.title}>Jogo da Memória - Família</Text>
-        <FlatList data={deck} keyExtractor={(item) => item.id} 
-          columnWrapperStyle={{ gap: 0, justifyContent: 'center' }} // espaçamento horizontal
-          numColumns={4} 
-          renderItem={({ item, index }) => (
-            <Card image={item.image} isFlipped={item.isFlipped || item.isMatched} 
-              onPress={() => handleCardPress(index)}resizeModeType="stretch" 
-            />
-          )}
-          scrollEnabled={false}
-          contentContainerStyle={[styles.board, { rowGap: 3 }]} // espaçamento vertical
-          style={{ width: '95%', height: '100%' }} 
-        />
-        <View style={styles.topicContainer}>
-         <TouchableOpacity onPress={() => setShowTopics(!showTopics)}>
-            <Text style={styles.topicBodyTitle}>
-              {showTopics ? 'Ocultar detalhes' : 'Clique para mais detalhes'}
-            </Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <LinearGradient colors={['#A67C7C', '#8B4A52', '#5D252A']} style={styles.head}>
+        <Text style={styles.mainTitle}>O título aqui</Text>
+      </LinearGradient>
+      <View style={styles.calcCard}>
+        <Text style={styles.title}>Simulador de Divisão de Bens</Text>
+        <Text style={styles.text}>
+          Nesse campo vai ter uma breve explicação do funcionamento do simulador
+          e o que ele faz, além de poder ser uma forma de orientar o usuário.
+        </Text>
+        <TouchableOpacity style={styles.calclButton} onPress={() => navigation.navigate('DivisionCalculator')}>
+          <Text style={styles.calcButtonText}>Iniciar Simulação</Text>
+        </TouchableOpacity>
+      </View>
+      {topics.map((item, index) => (
+        <View key={index} style={styles.topicCard}>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.text}>{item.summary}</Text>
+          <TouchableOpacity style={styles.button} onPress={() => openModal(item)}>
+            <Text style={styles.buttonText}>Mostrar mais</Text>
           </TouchableOpacity>
-          {showTopics && (
-            <View style={styles.topicTbody}>
-              {familyTopics.map((topic, index) => (
-                <View key={index} style={styles.topicCard}>
-                  <Text style={styles.topicCardTitle}>{topic.titulo}</Text>
-                  <Image source={topic.imagem} style={styles.topicCardImage}/>
-                  <Text style={styles.topicCardText}>{topic.explicacao}</Text>
-                </View>
-              ))}
-            </View>
-          )}
         </View>
-      </ScrollView>
-      <Modal visible={modalVisible} transparent animationType="fade">
-        <View style={styles.modalBackground}>
-          <View style={styles.modalContainer}>
-            <TouchableOpacity style={styles.button}
-              onPress={() => { setDeck(createShuffledDeck()); setModalVisible(false);}}>
-              <Text style={styles.buttonText}>Jogar Novamente</Text>
+      ))}
+      <Modal visible={modalVisible} transparent animationType="slide" onRequestClose={() => setModalVisible(false)}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            {selectedTopic && (
+              <ScrollView>
+                <View style={styles.modalHeader}>
+                  <Image source={selectedTopic.icon} style={styles.icon} />
+                  <Text style={styles.modalTitle}>{selectedTopic.title}</Text>
+                </View>
+                {selectedTopic.subTitle ? (
+                  <Text style={styles.sectionTitle}>
+                    {selectedTopic.subTitle}
+                  </Text>
+                ) : null}
+                {selectedTopic.explanation ? (
+                  <Text style={styles.modalText}>
+                    {selectedTopic.explanation}
+                  </Text>
+                ) : null}
+                <Text style={styles.sectionTitle}>Características:</Text>
+                {selectedTopic.characteristics.map((car, idx) => (
+                  <Text key={idx} style={styles.listItem}>
+                    • {car}
+                  </Text>
+                ))}
+                <Text style={styles.legalBasis}>
+                  Base legal: {selectedTopic.legalBasis}
+                </Text>
+              </ScrollView>
+            )}
+            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)} >
+              <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>
           </View>
         </View>
       </Modal>
-    </LinearGradient>
+    </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 45
+    flexGrow: 1,
+    backgroundColor: '#f5f5f5',
+    paddingBottom: 30,
   },
-  title: {
-    fontSize: 25,
+  head: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 30,
+    height: 150,
+  },
+  mainTitle: {
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#fff',
-    marginVertical: 15
   },
-  board: {
-    paddingBottom: 10,
-  },
-  card: {
-    width: 82,
-    height: 145,
-    margin: 2,
-    marginHorizontal: 3,
-    borderRadius: 8,
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 10,
-  },
-  topicContainer: {
-    marginTop: 10,
-    width: '100%',
-    alignItems: 'center'
-  },
-  topicBodyTitle: {
-    width: 340,
-    height: 35,
-    fontSize: 18,
+  title: {
+    fontSize: 22,
     textAlign: 'center',
-    textAlignVertical: 'center',
-    backgroundColor: '#5D252A',
-    borderRadius: 8,
     fontWeight: 'bold',
-    color: '#ffffff',
-    marginBottom: 15,
-    paddingHorizontal: 30
   },
-  topicTbody: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+  calcCard: {
+    padding: 20,
+  },
+  text: {
+    textAlign: 'center',
+    margin: 10,
+    paddingBottom: 10,
+    fontSize: 16,
+  },
+  calclButton: {
+    backgroundColor: '#8B4A52',
+    padding: 12,
     justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    width: '60%',
+    borderRadius: 12,
+  },
+  calcButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center',
   },
   topicCard: {
-    width: '41%',
-    margin: 5,
-    backgroundColor: '#fff',
-    padding: 10,
+    backgroundColor: '#e9dbd9',
+    padding: 15,
+    margin: 10,
     borderRadius: 10,
-    elevation: 3
-  },
-  topicCardTitle: {
-    color: '#5D252A',
-    fontWeight: 'bold',
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 5
-  },
-  topicCardImage: {
-    width: '70%',
-    height: 100,
-    resizeMode: 'cover',
-    alignSelf: 'center',
-    marginBottom: 2,
-    borderRadius: 20,
-  },
-  topicCardText: {
-    color: '#8B4A52',
-    fontSize: 14,
-    textAlign: 'justify',
-  },
-  modalBackground: {
-    flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-  },
-  modalContainer: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 15,
-    alignItems: 'center',
-    width: '80%',
   },
   button: {
-    backgroundColor: '#d4af37',
-    padding: 12,
-    borderRadius: 8,
-    marginTop: 10,
-    width: '100%',
+    backgroundColor: '#8B4A52',
+    paddingHorizontal: 20,
+    width: '50%',
+    alignSelf: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 10,
+    borderRadius: 8,
   },
   buttonText: {
     color: '#fff',
+    fontWeight: 'bold',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    width: '90%',
+    maxHeight: '85%',
+    padding: 20,
+    borderRadius: 10,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  icon: {
+    width: 80,
+    height: 80,
+    marginRight: 5,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    flexShrink: 1,
+  },
+  sectionTitle: {
+    fontWeight: 'bold',
+    marginTop: 5,
+    marginBottom: 5,
     fontSize: 16,
-  }
+  },
+  modalText: {
+    fontSize: 16,
+    textAlign: 'justify',
+  },
+  listItem: {
+    fontSize: 16,
+    marginLeft: 10,
+    marginBottom: 4,
+  },
+  legalBasis: {
+    marginTop: 15,
+    fontStyle: 'italic',
+    fontSize: 14,
+    color: '#333',
+  },
+  closeButton: {
+    marginTop: 20,
+    backgroundColor: '#8B4A52',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  closeButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
 });
+
+export default Tela8Screen;
